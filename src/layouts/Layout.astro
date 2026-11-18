@@ -1,0 +1,143 @@
+---
+import '@fontsource-variable/newsreader/opsz.css';
+import '@fontsource-variable/newsreader/opsz-italic.css';
+import '@fontsource-variable/archivo/index.css';
+import '../styles/global.css';
+import { PROD_URL, SITE_NAME, GA_ID, META_PIXEL_ID, IS_STAGING } from '../config';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string; // e.g. "/about/"
+  ogImage?: string; // e.g. "/og-default.jpg"
+  type?: 'website' | 'article';
+  jsonld?: object[];
+  preload?: string; // hero image path (relative to site root)
+  noindex?: boolean;
+}
+const { title, description, path, ogImage = '/og-default.jpg', type = 'website', jsonld = [], preload, noindex = false } = Astro.props;
+
+const depth = path.split('/').filter(Boolean).length;
+const up = depth ? '../'.repeat(depth) : './'; // relative prefix to site root, works under any base path
+const canonical = PROD_URL + path;
+const og = PROD_URL + ogImage;
+
+const org = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: SITE_NAME,
+  url: PROD_URL + '/',
+  logo: PROD_URL + '/icon-512.png',
+  image: og,
+  description: 'DsignPoint is a strategic growth partner for businesses that have outgrown what worked before: strategy, brand, digital presence and growth under one relationship.',
+  email: 'info@dsignpoint.com',
+  telephone: '+34644844692',
+  address: { '@type': 'PostalAddress', addressLocality: 'Torrevieja', addressCountry: 'ES' },
+  sameAs: [
+    'https://www.instagram.com/dsignpoint',
+    'https://www.facebook.com/dsignpoint',
+    'https://www.linkedin.com/company/dsignpoint/',
+    'https://www.youtube.com/@cindymateus',
+  ],
+};
+const graph = [org, ...(path === '/' ? [{ '@context': 'https://schema.org', '@type': 'WebSite', name: SITE_NAME, url: PROD_URL + '/' }] : []), ...jsonld];
+const robots = IS_STAGING || noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#3a1520" />
+
+    <link rel="icon" href={up + 'favicon.ico'} sizes="48x48" />
+    <link rel="icon" type="image/png" href={up + 'favicon-32.png'} sizes="32x32" />
+    <link rel="apple-touch-icon" href={up + 'apple-touch-icon.png'} />
+    <link rel="manifest" href={up + 'site.webmanifest'} />
+
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={og} />
+    <meta property="og:locale" content="en_GB" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={og} />
+
+    {preload && <link rel="preload" as="image" href={up + preload} />}
+    {graph.map((g) => <script type="application/ld+json" set:html={JSON.stringify(g)} />)}
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <main id="main"><slot /></main>
+
+    <div id="cc" role="dialog" aria-live="polite" aria-label="Cookie settings">
+      <p>We use essential cookies to run this site. With your OK we also use analytics and marketing cookies to understand what works and to measure our campaigns. You can change your mind any time. <a href={up + 'privacy-policy/#cookies'}>Privacy Policy</a></p>
+      <div class="row">
+        <button type="button" class="pri" data-cc="all">Accept all</button>
+        <button type="button" data-cc="essential">Essential only</button>
+      </div>
+    </div>
+
+    <script is:inline define:vars={{ GA_ID, META_PIXEL_ID }}>
+      (function () {
+        var KEY = 'dp_consent_v1';
+        var doc = document;
+        function load(src, cb) { var s = doc.createElement('script'); s.async = true; s.src = src; if (cb) s.onload = cb; doc.head.appendChild(s); }
+        function startAnalytics() {
+          if (!GA_ID || window.__dpGA) return; window.__dpGA = 1;
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { dataLayer.push(arguments); };
+          gtag('js', new Date()); gtag('config', GA_ID, { anonymize_ip: true });
+          load('https://www.googletagmanager.com/gtag/js?id=' + GA_ID);
+        }
+        function startMarketing() {
+          if (!META_PIXEL_ID || window.__dpFB) return; window.__dpFB = 1;
+          !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); }; if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); }(window, doc, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', META_PIXEL_ID); fbq('track', 'PageView');
+        }
+        function apply(c) { if (c === 'all') { startAnalytics(); startMarketing(); } }
+        function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+        function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+        var banner = doc.getElementById('cc');
+        var saved = get();
+        if (saved) apply(saved); else banner.classList.add('show');
+        banner.addEventListener('click', function (e) {
+          var b = e.target.closest('[data-cc]'); if (!b) return;
+          var v = b.getAttribute('data-cc'); set(v); banner.classList.remove('show'); apply(v);
+        });
+        doc.addEventListener('click', function (e) {
+          if (e.target.closest('[data-cc-open]')) { e.preventDefault(); banner.classList.add('show'); }
+        });
+        // mobile menu
+        var burger = doc.querySelector('.dp-burger'), menu = doc.getElementById('dp-nav');
+        function closeMenu() { if (!menu) return; menu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); burger.setAttribute('aria-label', 'Open menu'); doc.body.classList.remove('nav-open'); }
+        if (burger && menu) {
+          burger.addEventListener('click', function () {
+            var open = menu.classList.toggle('open');
+            burger.setAttribute('aria-expanded', open ? 'true' : 'false'); burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            doc.body.classList.toggle('nav-open', open);
+          });
+          menu.addEventListener('click', function (e) { if (e.target.closest('a')) closeMenu(); });
+          doc.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+        }
+        // scroll reveal + hero zoom
+        var rv = doc.querySelectorAll('.rv');
+        if ('IntersectionObserver' in window && rv.length) {
+          var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }); }, { threshold: 0.12 });
+          rv.forEach(function (el) { io.observe(el); });
+        } else { rv.forEach(function (el) { el.classList.add('in'); }); }
+        requestAnimationFrame(function () { doc.documentElement.classList.add('is-loaded'); });
+      })();
+    </script>
+  </body>
+</html>

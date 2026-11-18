@@ -1,0 +1,138 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { FORM_ENDPOINT, CAL_LINK } from "../../config";
+const ld = [{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://dsignpoint.com/"}, {"@type": "ListItem", "position": 2, "name": "Book a call", "item": "https://dsignpoint.com/book-a-call/"}]}];
+---
+<Layout title="Book a discovery call | DsignPoint" description="Book a 30-minute discovery call with DsignPoint. Tell us about your business and we'll help you see what to do first." path="/book-a-call/" ogImage="/uploads/bn_book.jpg"   jsonld={ld}>
+
+
+<div style="position:relative;overflow-x:hidden;">
+<section style="position:relative;min-height:min(72vh,700px);display:flex;flex-direction:column;color:oklch(97% 0.012 70);overflow:hidden;background:oklch(18% 0.04 20);"><img src="../uploads/bn_book.jpg" alt="Woman smiling on a phone call on a sunny terrace by the Mediterranean" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;"><div style="position:absolute;inset:0;background:linear-gradient(180deg, oklch(15% 0.05 20 / 0.40) 0%, oklch(15% 0.05 20 / 0.18) 40%, oklch(12% 0.06 18 / 0.92) 100%);"></div>
+    <div style="position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,56px);width:100%;max-width:1200px;margin:0 auto;">
+      <a href=".." class="dp-logo" aria-label="DsignPoint home"><span style="display:flex;align-items:center;gap:12px;"><img src="../uploads/DP-icon-yvoir-cropped.png" alt="" style="height:48px;width:auto;display:block;"><img src="../uploads/DP-wordmark-yvoir-cropped.png" alt="DsignPoint" style="height:24px;width:auto;display:block;"></span></a>
+      <button type="button" class="dp-burger" aria-label="Open menu" aria-expanded="false" aria-controls="dp-nav"><span></span><span></span></button><div id="dp-nav" role="navigation" aria-label="Main" class="dp-nav-links" style="display:flex;align-items:center;gap:clamp(14px,2vw,30px);font-size:13px;letter-spacing:0.06em;text-transform:uppercase;">
+        <a href=".." style="color:oklch(88% 0.015 60);">Home</a>
+        <a href="../approach/" style="color:oklch(88% 0.015 60);">Approach</a>
+        <a href="../case-studies/" style="color:oklch(88% 0.015 60);">Case Studies</a>
+        <a href="../insights/" style="color:oklch(88% 0.015 60);">Insights</a>
+        <a href="../about/" style="color:oklch(88% 0.015 60);">About</a>
+        <a href="./" style="display:inline-flex;align-items:center;gap:10px;border:1px solid oklch(83% 0.05 80);background:oklch(83% 0.05 80);color:oklch(24% 0.11 15);padding:12px 24px;font-weight:600;box-shadow:0 8px 28px oklch(83% 0.05 80 / 0.35);transition:background 0.35s ease, border-color 0.35s ease, gap 0.35s ease;" class="h1">Book a call <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+
+<div style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(72px,12vh,140px) clamp(20px,5vw,56px) clamp(32px,5vh,64px);width:100%;max-width:1200px;margin:0 auto;"><p style="font-family:monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:oklch(83% 0.05 80);margin:0 0 24px;">Book a call</p><h1 style="font-family:'Newsreader Variable','Newsreader',serif;font-weight:400;font-size:clamp(34px,4.8vw,68px);line-height:1.0;letter-spacing:-0.01em;margin:0 0 24px;max-width:20ch;">Let’s find out where your business is going.</h1><p style="font-size:clamp(15px,1.4vw,18px);line-height:1.55;margin:0 0 28px;max-width:52ch;color:oklch(88% 0.015 60);">A free 30-minute discovery call. Tell us a little about your business first, then pick a time that suits you.</p></div>
+</section>
+<section style="background:oklch(97% 0.012 70);color:oklch(17% 0.014 30);padding:clamp(56px,9vh,110px) 0;"><div style="width:100%;max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,56px);"><div style="display:flex;flex-wrap:wrap;gap:clamp(32px,6vw,96px);align-items:flex-start;"><div style="flex:1 1 360px;"><p style="font-family:monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:oklch(52% 0.09 70);margin:0 0 28px;">Free · 30 minutes · Online</p><h2 style="font-family:'Newsreader Variable','Newsreader',serif;font-weight:400;font-size:clamp(30px,4vw,54px);line-height:1.05;letter-spacing:-0.01em;color:oklch(17% 0.014 30);margin:0 0 36px;max-width:12ch;">What happens on the call.</h2><div style="margin:0 0 30px;"><p style="font-family:monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:oklch(52% 0.09 70);margin:0 0 6px;">01</p><p style="font-family:'Newsreader Variable','Newsreader',serif;font-size:clamp(24px,2.4vw,30px);line-height:1.15;color:oklch(17% 0.014 30);margin:0 0 8px;">We listen</p><p style="font-size:16px;line-height:1.65;color:oklch(28% 0.02 30);margin:0;max-width:40ch;">Where your business is today, where you want to take it, and what’s getting in the way.</p></div><div style="margin:0 0 30px;"><p style="font-family:monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:oklch(52% 0.09 70);margin:0 0 6px;">02</p><p style="font-family:'Newsreader Variable','Newsreader',serif;font-size:clamp(24px,2.4vw,30px);line-height:1.15;color:oklch(17% 0.014 30);margin:0 0 8px;">We look at the whole picture</p><p style="font-size:16px;line-height:1.65;color:oklch(28% 0.02 30);margin:0;max-width:40ch;">Positioning, offer, website, marketing. What’s actually behind what you’re feeling, not just the symptom you came with.</p></div><div style="margin:0 0 30px;"><p style="font-family:monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:oklch(52% 0.09 70);margin:0 0 6px;">03</p><p style="font-family:'Newsreader Variable','Newsreader',serif;font-size:clamp(24px,2.4vw,30px);line-height:1.15;color:oklch(17% 0.014 30);margin:0 0 8px;">You leave with direction</p><p style="font-size:16px;line-height:1.65;color:oklch(28% 0.02 30);margin:0;max-width:40ch;">An honest view of what to do first, what can wait, and whether we’re the right partner for it.</p></div><div style="margin-top:40px;"><div style="position:relative;overflow:hidden;aspect-ratio:4/3;width:100%;"><img loading="lazy" decoding="async" src="../uploads/ab_hero.jpg" alt="A woman looking out over Spanish rooftops and the Mediterranean at sunrise, holding a notebook" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;"></div></div></div><div style="flex:1.25 1 460px;background:oklch(93% 0.015 60);padding:clamp(28px,4vw,52px);"><div data-step="1"><p style="font-family:monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:oklch(52% 0.09 70);margin:0 0 14px;">Step 1 of 2</p><h2 style="font-family:'Newsreader Variable','Newsreader',serif;font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.1;color:oklch(17% 0.014 30);margin:0 0 10px;">Tell us about your business.</h2><p style="font-size:16px;line-height:1.7;color:oklch(28% 0.02 30);margin:0 0 28px;">It takes about two minutes. Then you’ll pick a time.</p><form id="lead-form" autocomplete="on" ><div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div><input type="hidden" name="ts" value=""><div style="margin:0 0 20px;"><label class="lbl">Your name</label><input class="fld" type="text" name="name" required autocomplete="name"></div><div style="margin:0 0 20px;"><label class="lbl">Email</label><input class="fld" type="email" name="email" required autocomplete="email"></div><div style="margin:0 0 20px;"><label class="lbl">Business name or website</label><input class="fld" type="text" name="business" required></div><div style="margin:0 0 20px;"><label class="lbl">Where is your business today?</label><select class="fld sel" name="stage" required><option value="">Choose one</option><option>Just getting started</option><option>Established and growing</option><option>Established, but feels stuck</option><option>Entering a new stage or market</option><option>Not sure yet</option></select></div><div style="margin:0 0 20px;"><label class="lbl">What’s not working, or where do you want to go next?</label><textarea class="fld" name="message" required></textarea></div><label style="display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.55;color:oklch(28% 0.02 30);margin:6px 0 28px;"><input type="checkbox" name="consent" required style="margin-top:3px;width:16px;height:16px;accent-color:oklch(33% 0.14 17);flex:none;"><span>I agree that DsignPoint may use these details to reply to my enquiry. See the <a href="../privacy-policy/" target="_blank" rel="noopener" style="color:oklch(33% 0.14 17);border-bottom:1px solid oklch(33% 0.14 17);">Privacy Policy</a>.</span></label><p id="form-error" role="alert" hidden style="font-size:15px;line-height:1.6;color:oklch(40% 0.17 25);margin:0 0 18px;">Something went wrong sending your request. Please try again, or email us at <a href="mailto:info@dsignpoint.com" style="color:oklch(33% 0.14 17);border-bottom:1px solid oklch(33% 0.14 17);">info@dsignpoint.com</a>.</p><button class="go" type="submit">Send my request <span aria-hidden="true">→</span></button></form></div><div data-step="2" hidden><p style="font-family:monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:oklch(52% 0.09 70);margin:0 0 14px;">Step 2 of 2</p><h2 style="font-family:'Newsreader Variable','Newsreader',serif;font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.1;color:oklch(17% 0.014 30);margin:0 0 14px;">Thank you, <span data-first-name></span>. We’ve got your request.</h2><p style="font-size:17px;line-height:1.7;color:oklch(28% 0.02 30);margin:0 0 10px;">Check your inbox, your link is on the way. Can’t wait to meet you.</p><p style="font-size:16px;line-height:1.7;color:oklch(28% 0.02 30);margin:0 0 30px;">Can’t wait? Click below to book your call now.</p><button class="go" type="button" id="show-cal">Book your call now <span aria-hidden="true">→</span></button></div><div data-step="3" hidden><p style="font-family:monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:oklch(52% 0.09 70);margin:0 0 14px;">Step 2 of 2</p><h2 style="font-family:'Newsreader Variable','Newsreader',serif;font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.1;color:oklch(17% 0.014 30);margin:0 0 10px;">Pick a time that suits you, <span data-first-name></span>.</h2><p style="font-size:16px;line-height:1.7;color:oklch(28% 0.02 30);margin:0 0 24px;">Add a few notes when you book. We read every request before confirming, so we can use the 30 minutes well.</p><iframe id="cal-frame" src="about:blank" title="Book a 30-minute discovery call" style="display:block;width:100%;height:720px;border:0;background:oklch(97% 0.012 70);"></iframe><p style="font-size:14px;line-height:1.6;color:oklch(28% 0.02 30);margin:18px 0 0;">Calendar not loading? <a href="https://cal.com/dsignpoint/discovery-call" target="_blank" rel="noopener" style="color:oklch(33% 0.14 17);border-bottom:1px solid oklch(33% 0.14 17);">Open it in a new tab</a>.</p></div></div></div></div></section>
+<footer style="background:oklch(15% 0.01 30);color:oklch(88% 0.015 60);padding:clamp(48px,8vh,80px) clamp(20px,5vw,56px) 32px;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="dp-fgrid" style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:clamp(24px,4vw,40px);padding-bottom:48px;border-bottom:1px solid oklch(30% 0.02 30);">
+        <div>
+          <a href=".."><span style="display:flex;align-items:center;gap:11px;margin-bottom:18px;"><img loading="lazy" decoding="async" src="../uploads/DP-icon-yvoir-cropped.png" alt="" style="height:42px;width:auto;display:block;"><img loading="lazy" decoding="async" src="../uploads/DP-wordmark-yvoir-cropped.png" alt="DsignPoint" style="height:21px;width:auto;display:block;"></span></a>
+          <p style="font-size:14px;line-height:1.6;margin:0;color:oklch(70% 0.015 55);max-width:28ch;">A strategic business, brand and digital partner for founders whose business has outgrown its brand.</p>
+        </div>
+        <div>
+          <p style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:oklch(55% 0.015 50);margin:0 0 16px;">Site</p>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;">
+            <a href=".." style="color:oklch(88% 0.015 60);">Home</a> <a href="../approach/" style="color:oklch(88% 0.015 60);">Approach</a>
+            <a href="../case-studies/" style="color:oklch(88% 0.015 60);">Case Studies</a>
+            <a href="../insights/" style="color:oklch(88% 0.015 60);">Insights</a>
+            <a href="../about/" style="color:oklch(88% 0.015 60);">About</a>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:oklch(55% 0.015 50);margin:0 0 16px;">Contact</p>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;">
+            <a href="tel:+34644844692" style="color:oklch(88% 0.015 60);">+34 644 84 46 92</a>
+            <a href="mailto:info@dsignpoint.com" style="color:oklch(88% 0.015 60);">info@dsignpoint.com</a>
+            <span style="color:oklch(70% 0.015 55);">Torrevieja, Spain</span>
+            <span style="color:oklch(55% 0.015 50);font-size:13px;">FR · EN · ES · PT</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:oklch(55% 0.015 50);margin:0 0 16px;">Follow</p>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;">
+            <a href="https://www.instagram.com/dsignpoint" style="color:oklch(88% 0.015 60);" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.facebook.com/dsignpoint" style="color:oklch(88% 0.015 60);" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://www.linkedin.com/company/dsignpoint/" style="color:oklch(88% 0.015 60);" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://www.youtube.com/@cindymateus" style="color:oklch(88% 0.015 60);" target="_blank" rel="noopener">YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:24px;font-size:12px;color:oklch(50% 0.015 45);">
+        <span>DSIGNPOINT © 2026 ALL RIGHTS RESERVED</span>
+        <div style="display:flex;gap:20px;">
+          <a href="../privacy-policy/" style="color:oklch(50% 0.015 45);">Privacy Policy</a>
+          <a href="../terms-and-conditions/" style="color:oklch(50% 0.015 45);">Terms &amp; Conditions</a>
+          <a href="#" data-cc-open style="color:oklch(50% 0.015 45);">Cookie settings</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+
+<style is:global>
+  .tile{position:relative;display:block;overflow:hidden;color:oklch(97% 0.012 70);}
+  .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1);}
+  .tile:hover img{transform:scale(1.05);}
+  .tile:hover{color:oklch(97% 0.012 70);}
+  .lnk:hover{color:oklch(97% 0.012 70) !important;border-color:oklch(97% 0.012 70) !important;}
+  .tile .arrow{display:inline-block;transition:transform .4s ease;}
+  .tile:hover .arrow{transform:translateX(8px);}
+  .tile .more{opacity:0;transform:translateY(8px);transition:opacity .5s ease, transform .5s ease;}
+  .tile:hover .more{opacity:1;transform:none;}
+  @media (hover:none){.tile .more{opacity:1;transform:none;}}
+  .mcol{flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:clamp(16px,2vw,28px);}
+  .fld{width:100%;display:block;border:1px solid oklch(80% 0.02 60);background:oklch(97% 0.012 70);color:oklch(17% 0.014 30);font-family:'Archivo',sans-serif;font-size:16px;padding:14px 16px;border-radius:0;outline:none;appearance:none;-webkit-appearance:none;}
+  .fld:focus{border-color:oklch(33% 0.14 17);}
+  textarea.fld{min-height:130px;resize:vertical;line-height:1.5;}
+  .lbl{display:block;font-family:monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:oklch(45% 0.02 40);margin:0 0 8px;}
+  .go{display:inline-flex;align-items:center;gap:12px;border:0;cursor:pointer;background:oklch(33% 0.14 17);color:oklch(97% 0.012 70);padding:17px 36px;font-family:'Archivo',sans-serif;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;border-radius:0;transition:background .35s ease, gap .35s ease;}
+  .go:hover{background:oklch(24% 0.11 15);gap:18px;}
+  .sel{background-image:linear-gradient(45deg,transparent 50%,oklch(33% 0.14 17) 50%),linear-gradient(135deg,oklch(33% 0.14 17) 50%,transparent 50%);background-position:calc(100% - 22px) 50%,calc(100% - 16px) 50%;background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:44px;}
+.h1:hover{background:oklch(97% 0.012 70) !important;border-color:oklch(97% 0.012 70) !important;color:oklch(33% 0.14 17) !important;gap:16px !important}</style>
+<script is:inline define:vars={{ ENDPOINT: '../' + FORM_ENDPOINT, HAS_ENDPOINT: !!FORM_ENDPOINT, CAL: CAL_LINK }}>
+  (function () {
+    var form = document.getElementById('lead-form');
+    if (!form) return;
+    var s1 = document.querySelector('[data-step="1"]'), s2 = document.querySelector('[data-step="2"]'), s3 = document.querySelector('[data-step="3"]');
+    var err = document.getElementById('form-error'), btn = form.querySelector('button[type=submit]');
+    var ts = form.querySelector('[name=ts]'); ts.value = String(Date.now());
+    var state = { name: '', email: '', notes: '' };
+    function names(n) { document.querySelectorAll('[data-first-name]').forEach(function (el) { el.textContent = n; }); }
+    function show(step) {
+      s1.hidden = step !== 1; s2.hidden = step !== 2; s3.hidden = step !== 3;
+      try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) {}
+    }
+    document.getElementById('show-cal').addEventListener('click', function () {
+      var q = new URLSearchParams({ embed: 'true', overlayCalendar: 'true', name: state.name, email: state.email, notes: state.notes });
+      document.getElementById('cal-frame').src = CAL + '?' + q.toString();
+      show(3);
+    });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.hidden = true;
+      var f = new FormData(form), g = function (k) { return String(f.get(k) || '').trim(); };
+      var payload = { name: g('name'), email: g('email'), business: g('business'), stage: g('stage'), message: g('message'), consent: !!f.get('consent'), website: g('website'), ts: g('ts') };
+      var label = btn.innerHTML; btn.disabled = true; btn.textContent = 'Sending…';
+      function ok() {
+        state.name = payload.name; state.email = payload.email;
+        state.notes = ('Business: ' + payload.business + '\nStage: ' + payload.stage + '\n' + payload.message).slice(0, 700);
+        names(payload.name.split(' ')[0]);
+        try { if (window.gtag) gtag('event', 'generate_lead'); if (window.fbq) fbq('track', 'Lead'); } catch (x) {}
+        show(2);
+      }
+      function fail() {
+        btn.disabled = false; btn.innerHTML = label;
+        err.hidden = false;
+      }
+      if (!HAS_ENDPOINT) { setTimeout(ok, 400); return; } // staging demo mode: no server, nothing is sent
+      fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok && j.ok }; }); })
+        .then(function (r) { r.ok ? ok() : fail(); })
+        .catch(fail);
+    });
+  })();
+</script>
+</Layout>
