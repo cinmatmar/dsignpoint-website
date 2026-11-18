@@ -3,7 +3,7 @@ export const SITE_NAME = 'DsignPoint';
 export const PROD_URL = 'https://dsignpoint.com';
 
 // Google Analytics 4 measurement ID, e.g. 'G-ABC123XYZ'. Leave '' to disable.
-export const GA_ID = '';
+export const GA_ID = 'G-YFFXWHSLL3';
 
 // Meta (Facebook) Pixel ID. Leave '' until the pixel exists.
 export const META_PIXEL_ID = '';

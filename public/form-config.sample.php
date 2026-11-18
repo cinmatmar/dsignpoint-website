@@ -3,7 +3,7 @@
 // form-config.php is never committed to GitHub and is never overwritten by deploys.
 return [
     'brevo_api_key'   => 'PASTE-YOUR-BREVO-API-KEY-HERE',
-    'list_id'         => 0,                          // numeric ID of the "Website leads" list in Brevo
+    'list_id'         => 2,                          // numeric ID of the "Website leads" list in Brevo
     'sender_email'    => 'info@dsignpoint.com',      // must be a verified sender in Brevo
     'sender_name'     => 'Cindy at DsignPoint',
     'notify_email'    => 'info@dsignpoint.com',      // where new-lead notifications arrive
