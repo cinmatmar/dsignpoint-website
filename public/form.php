@@ -69,7 +69,7 @@ $key = $cfg['brevo_api_key'];
 $h = fn(string $s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
 
 // 1) Save / update the contact in the "Website leads" list
-[$c1] = brevo($key, 'POST', '/contacts', [
+[$c1, $b1] = brevo($key, 'POST', '/contacts', [
     'email' => $email, 'listIds' => [(int)$cfg['list_id']], 'updateEnabled' => true,
     'attributes' => ['FIRSTNAME' => $first, 'LASTNAME' => trim(mb_substr($name, mb_strlen($first)))],
 ]);
@@ -85,7 +85,7 @@ $confirm = '<div style="font-family:Arial,Helvetica,sans-serif;background:#f8f1e
  . '<p style="font-size:15px;line-height:1.7;margin:0 0 6px;">You can simply reply to this email if you have any questions before we talk.</p>'
  . '<p style="font-size:15px;line-height:1.7;margin:24px 0 0;">Talk soon,<br><strong>Cindy</strong><br><span style="color:#7a6a62;">Founder, DsignPoint</span></p>'
  . '</div><p style="text-align:center;font-size:12px;color:#8a7a72;margin:18px 0 0;">DSIGNPOINT SC &middot; Torrevieja, Spain &middot; <a href="https://dsignpoint.com/privacy-policy/" style="color:#8a7a72;">Privacy Policy</a></p></div>';
-[$c2] = brevo($key, 'POST', '/smtp/email', [
+[$c2, $b2] = brevo($key, 'POST', '/smtp/email', [
     'sender' => ['name' => $cfg['sender_name'], 'email' => $cfg['sender_email']],
     'to' => [['email' => $email, 'name' => $name]],
     'replyTo' => ['email' => $cfg['notify_email'], 'name' => $cfg['sender_name']],
@@ -110,4 +110,4 @@ brevo($key, 'POST', '/smtp/email', [
 // The lead sees success as long as the confirmation email or the contact save worked
 if (($c1 >= 200 && $c1 < 300) || ($c2 >= 200 && $c2 < 300)) out(200, ['ok' => true]);
 error_log('DsignPoint form: Brevo failed ' . $c1 . '/' . $c2);
-out(502, ['ok' => false, 'error' => 'upstream']);
+out(502, ['ok' => false, 'error' => 'upstream', 'dbg' => [$c1, $b1['message'] ?? null, $c2, $b2['message'] ?? null]]); // TEMP-DEBUG
