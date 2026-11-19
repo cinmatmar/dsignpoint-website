@@ -78,6 +78,7 @@ $h = fn(string $s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
 $cal = $cfg['cal_link'];
 $confirm = '<div style="font-family:Arial,Helvetica,sans-serif;background:#f8f1ea;padding:32px 16px;">'
  . '<div style="max-width:560px;margin:0 auto;background:#ffffff;padding:40px 36px;color:#2a1d1a;">'
+ . '<p style="margin:0 0 30px;"><img src="https://dsignpoint.com/email-logo.png" width="170" alt="DsignPoint" style="display:block;border:0;height:auto;width:170px;"></p>'
  . '<p style="font-family:Georgia,serif;font-size:26px;line-height:1.2;margin:0 0 18px;color:#5a1626;">Thank you, ' . $h($first) . '. We&rsquo;ve got your request.</p>'
  . '<p style="font-size:16px;line-height:1.7;margin:0 0 16px;">I&rsquo;ve read what you shared about <strong>' . $h($business) . '</strong>, and I&rsquo;m looking forward to understanding where your business is and where you want to take it.</p>'
  . '<p style="font-size:16px;line-height:1.7;margin:0 0 26px;">The next step is to pick a time that suits you for your free 30-minute discovery call:</p>'
