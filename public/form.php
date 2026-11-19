@@ -33,7 +33,7 @@ if ($ts > 0 && (time() * 1000 - $ts) < 3000) out(200, ['ok' => true]);
 $ip = $_SERVER['REMOTE_ADDR'] ?? 'x';
 $rl = sys_get_temp_dir() . '/dp_rl_' . md5($ip);
 $hits = is_file($rl) ? array_filter(array_map('intval', explode(',', (string)file_get_contents($rl))), fn($t) => $t > time() - 3600) : [];
-if (count($hits) >= 5) out(429, ['ok' => false, 'error' => 'rate_limited']);
+if (count($hits) >= 10) out(429, ['ok' => false, 'error' => 'rate_limited']);
 $hits[] = time(); @file_put_contents($rl, implode(',', $hits));
 
 // Optional Cloudflare Turnstile
@@ -110,4 +110,4 @@ brevo($key, 'POST', '/smtp/email', [
 // The lead sees success as long as the confirmation email or the contact save worked
 if (($c1 >= 200 && $c1 < 300) || ($c2 >= 200 && $c2 < 300)) out(200, ['ok' => true]);
 error_log('DsignPoint form: Brevo failed ' . $c1 . '/' . $c2);
-out(502, ['ok' => false, 'error' => 'upstream', 'dbg' => [$c1, $b1['message'] ?? null, $c2, $b2['message'] ?? null]]); // TEMP-DEBUG
+out(502, ['ok' => false, 'error' => 'upstream']);
